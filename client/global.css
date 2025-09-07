@@ -1,5 +1,6 @@
 /** @import must precede all other statements */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -57,6 +58,10 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --rose-primary: 0 30% 66%;
+    --rose-foreground: 0 0% 100%;
+    --rose-dark: 0 0% 18%;
   }
 
   .dark {
@@ -95,6 +100,10 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --rose-primary: 0 30% 66%;
+    --rose-foreground: 0 0% 100%;
+    --rose-dark: 0 0% 18%;
   }
 }
 
