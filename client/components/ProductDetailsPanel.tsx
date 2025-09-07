@@ -10,6 +10,9 @@ interface ProductDetailsPanelProps {
   currentPrice: number;
   originalPrice: number;
   discount: number;
+  features: string[];
+  onAddToCart: () => void;
+  onBuyNow: () => void;
 }
 
 export function ProductDetailsPanel({
@@ -20,22 +23,13 @@ export function ProductDetailsPanel({
   currentPrice,
   originalPrice,
   discount,
+  features,
+  onAddToCart,
+  onBuyNow,
 }: ProductDetailsPanelProps) {
-  const { toast } = useToast();
   const [pincode, setPincode] = useState("");
   const [deliveryMsg, setDeliveryMsg] = useState<string | null>(null);
   const [pinError, setPinError] = useState<string | null>(null);
-
-  const handleAddToCart = () => {
-    toast({ title: "Added to cart", description: `${title} added to cart` });
-  };
-
-  const handleBuyNow = () => {
-    toast({
-      title: "Proceed to checkout",
-      description: "Redirecting to payment...",
-    });
-  };
 
   const handleCheckPincode = () => {
     if (!/^[0-9]{6}$/.test(pincode)) {
@@ -52,14 +46,14 @@ export function ProductDetailsPanel({
   };
 
   return (
-    <div className="flex flex-col gap-8 max-w-lg">
+    <div className="flex flex-col gap-6 md:gap-8 w-full max-w-lg">
       {/* Product Title and Rating */}
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <h1 className="text-neutral text-3xl font-medium font-montserrat">
+          <h1 className="text-neutral text-xl md:text-2xl lg:text-3xl font-medium font-montserrat">
             {title}
           </h1>
-          <h2 className="text-muted text-3xl font-bold font-montserrat">
+          <h2 className="text-muted text-xl md:text-2xl lg:text-3xl font-bold font-montserrat">
             {subtitle}
           </h2>
         </div>
@@ -99,31 +93,31 @@ export function ProductDetailsPanel({
 
       {/* Features */}
       <div className="flex flex-col gap-5">
-        <div className="grid grid-cols-2 gap-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-14">
           <div className="flex items-center gap-2.5">
-            <Package className="w-12 h-12 text-neutral" strokeWidth={1.5} />
-            <span className="text-neutral text-xl font-medium font-montserrat">
+            <Package className="w-8 h-8 md:w-12 md:h-12 text-neutral" strokeWidth={1.5} />
+            <span className="text-neutral text-sm md:text-xl font-medium font-montserrat">
               Easy 30 Day Return
             </span>
           </div>
           <div className="flex items-center gap-2.5">
-            <Package className="w-12 h-12 text-neutral" strokeWidth={1.5} />
-            <span className="text-neutral text-xl font-medium font-montserrat">
+            <Package className="w-8 h-8 md:w-12 md:h-12 text-neutral" strokeWidth={1.5} />
+            <span className="text-neutral text-sm md:text-xl font-medium font-montserrat">
               925 Silver Plating
             </span>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-[3.75rem]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-[3.75rem]">
           <div className="flex items-center gap-2.5">
-            <Shield className="w-12 h-12 text-neutral" strokeWidth={1.5} />
-            <span className="text-neutral text-xl font-medium font-montserrat">
+            <Shield className="w-8 h-8 md:w-12 md:h-12 text-neutral" strokeWidth={1.5} />
+            <span className="text-neutral text-sm md:text-xl font-medium font-montserrat">
               6- Month Warranty
             </span>
           </div>
           <div className="flex items-center gap-2.5">
-            <Award className="w-12 h-12 text-neutral" strokeWidth={1.5} />
-            <span className="text-neutral text-xl font-medium font-montserrat">
+            <Award className="w-8 h-8 md:w-12 md:h-12 text-neutral" strokeWidth={1.5} />
+            <span className="text-neutral text-sm md:text-xl font-medium font-montserrat">
               Premium Gold
             </span>
           </div>
@@ -131,10 +125,10 @@ export function ProductDetailsPanel({
       </div>
 
       {/* Action Buttons */}
-      <div className="flex gap-3">
+      <div className="flex flex-col md:flex-row gap-3">
         <button
-          onClick={handleAddToCart}
-          className="flex-1 h-[68px] px-8 border font-montserrat text-xl font-bold transition-colors hover:bg-pink-50"
+          onClick={onAddToCart}
+          className="flex-1 h-12 md:h-[68px] px-4 md:px-8 border font-montserrat text-sm md:text-xl font-bold transition-colors hover:bg-pink-50"
           style={{
             borderColor: "#FF8F9D",
             color: "#FF8F9D",
@@ -143,8 +137,8 @@ export function ProductDetailsPanel({
           ADD TO CART
         </button>
         <button
-          onClick={handleBuyNow}
-          className="flex-1 h-[68px] px-8 font-montserrat text-xl font-bold text-white transition-opacity hover:opacity-90"
+          onClick={onBuyNow}
+          className="flex-1 h-12 md:h-[68px] px-4 md:px-8 font-montserrat text-sm md:text-xl font-bold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: "#FF8F9D" }}
         >
           BUY NOW
@@ -221,17 +215,11 @@ export function ProductDetailsPanel({
           </h3>
 
           <div className="flex flex-col gap-2">
-            {[
-              { label: "Material:", value: "925 Sterling Silver" },
-              { label: "Plating:", value: "18K Gold" },
-              { label: "Weight:", value: "10grams" },
-              { label: "Stone Type:", value: "Premium Jerkin" },
-            ].map((item, index) => (
+            {features.map((feature, index) => (
               <div key={index} className="flex items-center gap-3.5">
                 <Check className="w-5 h-5 text-green-600" strokeWidth={1.75} />
-                <span className="text-lg font-montserrat">
-                  <span className="font-bold text-neutral">{item.label}</span>
-                  <span className="font-normal text-muted"> {item.value}</span>
+                <span className="text-lg font-montserrat font-normal text-muted">
+                  {feature}
                 </span>
               </div>
             ))}

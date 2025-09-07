@@ -11,7 +11,7 @@ interface BreadcrumbProps {
 
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
-    <div className="flex items-center gap-2 px-32 py-4">
+    <div className="flex items-center gap-2 px-4 md:px-8 lg:px-32 py-4 overflow-x-auto">
       {items.map((item, index) => (
         <div key={index} className="flex items-center gap-2">
           {item.href ? (

@@ -17,13 +17,13 @@ export function ProductImageGallery({
   const [currentImageIndex, setCurrentImageIndex] = useState(currentIndex);
 
   const goToPrevious = () => {
-    const newIndex = currentImageIndex === 0 ? displayImages.length - 1 : currentImageIndex - 1;
+    const newIndex = currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
     setCurrentImageIndex(newIndex);
     onImageChange?.(newIndex);
   };
 
   const goToNext = () => {
-    const newIndex = currentImageIndex === displayImages.length - 1 ? 0 : currentImageIndex + 1;
+    const newIndex = currentImageIndex === images.length - 1 ? 0 : currentImageIndex + 1;
     setCurrentImageIndex(newIndex);
     onImageChange?.(newIndex);
   };
@@ -35,11 +35,10 @@ export function ProductImageGallery({
 
   // Placeholder images for demo
   const placeholderImages = [
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
+    "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=400&fit=crop",
+    "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=400&fit=crop",
+    "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=500&h=400&fit=crop",
+    "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=400&fit=crop",
   ];
 
   const displayImages = images.length > 0 ? images : placeholderImages;

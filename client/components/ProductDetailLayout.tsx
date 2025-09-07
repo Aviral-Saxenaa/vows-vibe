@@ -18,10 +18,10 @@ export function ProductDetailLayout() {
   ];
 
   const productImages = [
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
+    "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=400&fit=crop",
+    "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=400&fit=crop",
+    "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=500&h=400&fit=crop",
+    "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=400&fit=crop",
   ];
 
   const productData = {
@@ -79,8 +79,8 @@ export function ProductDetailLayout() {
       <Breadcrumb items={breadcrumbItems} />
 
       {/* Main Product Section */}
-      <div className="px-32 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-none">
+      <div className="px-4 md:px-8 lg:px-32 py-4 md:py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 max-w-none">
           {/* Left Column - Images */}
           <div className="flex justify-start">
             <ProductImageGallery

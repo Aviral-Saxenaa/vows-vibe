@@ -1,35 +1,52 @@
 import { Heart, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useApp } from "@/context/AppContext";
+import { useToast } from "@/hooks/use-toast";
 
-interface ProductCardProps {
+interface Product {
+  id: string;
   title: string;
   price: number;
   originalPrice: number;
   rating: number;
   reviewCount: number;
-  image?: string;
-  isWishlisted?: boolean;
-  onWishlistToggle?: () => void;
-  onAddToCart?: () => void;
+  image: string;
+  category: string;
+  description: string;
+  features: string[];
 }
 
-export function ProductCard({
-  title,
-  price,
-  originalPrice,
-  rating,
-  reviewCount,
-  image,
-  isWishlisted = false,
-  onWishlistToggle,
-  onAddToCart,
-}: ProductCardProps) {
+interface ProductCardProps {
+  product: Product;
+}
+
+export function ProductCard({ product }: ProductCardProps) {
+  const navigate = useNavigate();
+  const { addToCart } = useApp();
+  const { toast } = useToast();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addToCart(product);
+    toast({
+      title: "Added to Cart!",
+      description: `${product.title} has been added to your cart.`,
+    });
+  };
+
+  const handleProductClick = () => {
+    navigate(`/product/${product.id}`);
+  };
   return (
-    <div className="w-[312px] bg-white rounded-lg overflow-hidden shadow-sm">
+    <div 
+      onClick={handleProductClick}
+      className="w-full max-w-[312px] bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+    >
       {/* Image Section */}
       <div className="relative w-full h-[316px] bg-gray-100">
         <img
-          src={image || "/placeholder.svg"}
-          alt={title}
+          src={product.image}
+          alt={product.title}
           className="w-full h-full object-cover"
         />
 
@@ -45,11 +62,11 @@ export function ProductCard({
 
         {/* Wishlist Button */}
         <button
-          onClick={onWishlistToggle}
+          onClick={(e) => e.stopPropagation()}
           className="absolute top-6 right-6 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-shadow"
         >
           <Heart
-            className={`w-5 h-5 ${isWishlisted ? "fill-red-500 text-red-500" : "text-neutral"}`}
+            className="w-5 h-5 text-neutral hover:text-red-500 transition-colors"
             strokeWidth={1.5}
           />
         </button>
@@ -59,16 +76,16 @@ export function ProductCard({
       <div className="p-0">
         <div className="flex flex-col gap-1 mb-2">
           <h3 className="text-neutral font-montserrat text-base font-medium line-clamp-2">
-            {title}
+            {product.title}
           </h3>
 
           {/* Pricing */}
           <div className="flex items-center gap-3.5">
             <span className="text-neutral text-2xl font-bold font-montserrat">
-              ₹ {price.toLocaleString()}
+              ₹ {product.price.toLocaleString()}
             </span>
             <span className="text-muted text-base font-medium font-montserrat line-through">
-              ₹ {originalPrice.toLocaleString()}
+              ₹ {product.originalPrice.toLocaleString()}
             </span>
           </div>
 
@@ -79,20 +96,20 @@ export function ProductCard({
                 <Star
                   key={i}
                   className="w-3 h-3 text-yellow-400"
-                  fill={i < Math.floor(rating) ? "#FCD34D" : "none"}
+                  fill={i < Math.floor(product.rating) ? "#FCD34D" : "none"}
                   strokeWidth={1}
                 />
               ))}
             </div>
             <span className="text-neutral text-xs font-medium font-montserrat">
-              ({reviewCount})
+              ({product.reviewCount})
             </span>
           </div>
         </div>
 
         {/* Add to Cart Button */}
         <button
-          onClick={onAddToCart}
+          onClick={handleAddToCart}
           className="w-full h-[52px] px-6 flex items-center justify-center font-montserrat text-lg font-medium text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: "#CA8787" }}
         >

@@ -20,8 +20,8 @@ export function Footer() {
   return (
     <footer className="w-full bg-gray-200/68">
       {/* Main Footer Content */}
-      <div className="px-32 py-9">
-        <div className="flex justify-between gap-32 mb-12">
+      <div className="px-4 md:px-8 lg:px-32 py-6 md:py-9">
+        <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-16 lg:gap-32 mb-8 md:mb-12">
           {/* Quick Links */}
           <div className="flex flex-col gap-9">
             <h3 className="text-accent font-montserrat text-base font-bold">
@@ -125,7 +125,7 @@ export function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="w-full px-32 py-3" style={{ backgroundColor: "#CA8787" }}>
+      <div className="w-full px-4 md:px-8 lg:px-32 py-3" style={{ backgroundColor: "#CA8787" }}>
         <p className="text-white font-montserrat text-sm font-medium">
           © 2024 Elegant Jewels. All Rights Reserved.
         </p>
