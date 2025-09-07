@@ -119,6 +119,21 @@
     --rose-primary: 0 30% 66%;
     --rose-foreground: 0 0% 100%;
     --rose-dark: 0 0% 18%;
+
+    --accent-primary: 0 97% 32%;
+    --accent-foreground: 0 0% 100%;
+
+    --pink-primary: 343 100% 78%;
+    --pink-foreground: 0 0% 100%;
+
+    --neutral-primary: 0 0% 18%;
+    --neutral-foreground: 0 0% 100%;
+
+    --muted-primary: 220 9% 55%;
+    --muted-foreground: 0 0% 100%;
+
+    --cream-primary: 48 33% 97%;
+    --cream-foreground: 0 0% 18%;
   }
 }
 
