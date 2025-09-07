@@ -60,7 +60,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
             <button
               key={index}
               onClick={() => setCurrentImageIndex(index)}
-              className={`relative w-26 h-28 rounded overflow-hidden ${
+              className={`relative w-[104px] h-[112px] rounded overflow-hidden ${
                 index === currentImageIndex ? 'ring-2 ring-neutral' : ''
               }`}
             >
