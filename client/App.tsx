@@ -8,6 +8,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import AddAccount from "./pages/AddAccount";
+import GoldJewellery from "./pages/GoldJewellery";
+import SilverJewellery from "./pages/SilverJewellery";
+import TrendingCollection from "./pages/TrendingCollection";
+import Gifts from "./pages/Gifts";
+import ShopByOccasion from "./pages/ShopByOccasion";
+import Login from "./pages/Login";
 
 const queryClient = new QueryClient();
 
