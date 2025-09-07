@@ -1,4 +1,4 @@
-import { User, Star } from 'lucide-react';
+import { User, Star } from "lucide-react";
 
 interface Review {
   id: string;
@@ -16,34 +16,36 @@ interface CustomerReviewsProps {
 export function CustomerReviews({ reviews }: CustomerReviewsProps) {
   const demoReviews: Review[] = [
     {
-      id: '1',
-      customerName: 'Anu',
-      date: '15/08/24',
+      id: "1",
+      customerName: "Anu",
+      date: "15/08/24",
       rating: 5,
-      comment: 'Such a gorgeous necklace. Got many compliments as well. Absolutely loved it',
-      images: ['/placeholder.svg', '/placeholder.svg']
+      comment:
+        "Such a gorgeous necklace. Got many compliments as well. Absolutely loved it",
+      images: ["/placeholder.svg", "/placeholder.svg"],
     },
     {
-      id: '2',
-      customerName: 'Anu',
-      date: '15/08/24',
+      id: "2",
+      customerName: "Anu",
+      date: "15/08/24",
       rating: 5,
-      comment: 'Looks beautiful 😻❤️❤️❤️ Go for it girls 😍💝💐 the quality is good ..',
-      images: ['/placeholder.svg']
-    }
+      comment:
+        "Looks beautiful 😻❤️❤️❤️ Go for it girls 😍💝💐 the quality is good ..",
+      images: ["/placeholder.svg"],
+    },
   ];
 
   const displayReviews = reviews.length > 0 ? reviews : demoReviews;
 
   return (
     <div className="w-full max-w-lg">
-      <div className="border-t pt-6" style={{ borderColor: '#FF8F9D' }}>
+      <div className="border-t pt-6" style={{ borderColor: "#FF8F9D" }}>
         <div className="flex flex-col gap-6">
           <h3 className="text-neutral text-xl font-bold font-montserrat">
             Customer Ratings
           </h3>
 
-          <div className="border-t pt-6" style={{ borderColor: '#FF8F9D' }}>
+          <div className="border-t pt-6" style={{ borderColor: "#FF8F9D" }}>
             <div className="flex flex-col gap-6">
               {displayReviews.map((review, index) => (
                 <div key={review.id}>
@@ -52,13 +54,16 @@ export function CustomerReviews({ reviews }: CustomerReviewsProps) {
                     <div className="flex flex-col gap-2.5 max-w-xs">
                       <div className="flex items-center gap-1.5">
                         <div className="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center">
-                          <User className="w-4 h-4 text-neutral" strokeWidth={1.5} />
+                          <User
+                            className="w-4 h-4 text-neutral"
+                            strokeWidth={1.5}
+                          />
                         </div>
                         <span className="text-neutral font-montserrat text-xl font-medium">
                           {review.customerName}
                         </span>
                       </div>
-                      
+
                       <span className="text-muted font-montserrat text-sm font-medium">
                         {review.date}
                       </span>
@@ -66,10 +71,10 @@ export function CustomerReviews({ reviews }: CustomerReviewsProps) {
                       {/* Rating Stars */}
                       <div className="flex gap-1 px-1">
                         {[...Array(5)].map((_, i) => (
-                          <Star 
+                          <Star
                             key={i}
                             className="w-3 h-3 text-yellow-400"
-                            fill={i < review.rating ? '#FCD34D' : 'none'}
+                            fill={i < review.rating ? "#FCD34D" : "none"}
                             strokeWidth={1}
                           />
                         ))}
@@ -102,7 +107,10 @@ export function CustomerReviews({ reviews }: CustomerReviewsProps) {
 
                   {/* Separator */}
                   {index < displayReviews.length - 1 && (
-                    <div className="border-t mt-6" style={{ borderColor: '#FF8F9D' }} />
+                    <div
+                      className="border-t mt-6"
+                      style={{ borderColor: "#FF8F9D" }}
+                    />
                   )}
                 </div>
               ))}

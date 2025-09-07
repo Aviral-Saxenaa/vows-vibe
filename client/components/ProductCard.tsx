@@ -1,4 +1,4 @@
-import { Heart, Star } from 'lucide-react';
+import { Heart, Star } from "lucide-react";
 
 interface ProductCardProps {
   title: string;
@@ -21,14 +21,14 @@ export function ProductCard({
   image,
   isWishlisted = false,
   onWishlistToggle,
-  onAddToCart
+  onAddToCart,
 }: ProductCardProps) {
   return (
     <div className="w-[312px] bg-white rounded-lg overflow-hidden shadow-sm">
       {/* Image Section */}
       <div className="relative w-full h-[316px] bg-gray-100">
         <img
-          src={image || '/placeholder.svg'}
+          src={image || "/placeholder.svg"}
           alt={title}
           className="w-full h-full object-cover"
         />
@@ -36,7 +36,7 @@ export function ProductCard({
         {/* Bestseller Tag */}
         <div
           className="absolute top-8 left-0 px-2 py-1 rounded-r-xl"
-          style={{ backgroundColor: '#A40303' }}
+          style={{ backgroundColor: "#A40303" }}
         >
           <span className="text-white font-montserrat text-base font-medium">
             BestSeller
@@ -49,7 +49,7 @@ export function ProductCard({
           className="absolute top-6 right-6 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-shadow"
         >
           <Heart
-            className={`w-5 h-5 ${isWishlisted ? 'fill-red-500 text-red-500' : 'text-neutral'}`}
+            className={`w-5 h-5 ${isWishlisted ? "fill-red-500 text-red-500" : "text-neutral"}`}
             strokeWidth={1.5}
           />
         </button>
@@ -79,7 +79,7 @@ export function ProductCard({
                 <Star
                   key={i}
                   className="w-3 h-3 text-yellow-400"
-                  fill={i < Math.floor(rating) ? '#FCD34D' : 'none'}
+                  fill={i < Math.floor(rating) ? "#FCD34D" : "none"}
                   strokeWidth={1}
                 />
               ))}
@@ -94,7 +94,7 @@ export function ProductCard({
         <button
           onClick={onAddToCart}
           className="w-full h-[52px] px-6 flex items-center justify-center font-montserrat text-lg font-medium text-white transition-opacity hover:opacity-90"
-          style={{ backgroundColor: '#CA8787' }}
+          style={{ backgroundColor: "#CA8787" }}
         >
           Add to Cart
         </button>

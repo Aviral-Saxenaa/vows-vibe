@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { MainNavigation } from './MainNavigation';
+import { ReactNode } from "react";
+import { MainNavigation } from "./MainNavigation";
 
 interface LayoutProps {
   children: ReactNode;
@@ -20,9 +20,7 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Main content area - visible on desktop */}
       <div className="hidden lg:flex flex-1 flex-col bg-white">
-        <main className="flex-1 p-8">
-          {children}
-        </main>
+        <main className="flex-1 p-8">{children}</main>
       </div>
     </div>
   );

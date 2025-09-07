@@ -1,33 +1,32 @@
-import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
-import { useState } from 'react';
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { useState } from "react";
 
 interface ProductImageGalleryProps {
   images: string[];
   productName?: string;
 }
 
-export function ProductImageGallery({ images, productName }: ProductImageGalleryProps) {
+export function ProductImageGallery({
+  images,
+  productName,
+}: ProductImageGalleryProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const goToPrevious = () => {
-    setCurrentImageIndex(prev => 
-      prev === 0 ? images.length - 1 : prev - 1
-    );
+    setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
   const goToNext = () => {
-    setCurrentImageIndex(prev => 
-      prev === images.length - 1 ? 0 : prev + 1
-    );
+    setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
   // Placeholder images for demo
   const placeholderImages = [
-    '/placeholder.svg',
-    '/placeholder.svg',
-    '/placeholder.svg',
-    '/placeholder.svg',
-    '/placeholder.svg'
+    "/placeholder.svg",
+    "/placeholder.svg",
+    "/placeholder.svg",
+    "/placeholder.svg",
+    "/placeholder.svg",
   ];
 
   const displayImages = images.length > 0 ? images : placeholderImages;
@@ -61,7 +60,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
               key={index}
               onClick={() => setCurrentImageIndex(index)}
               className={`relative w-[104px] h-[112px] rounded overflow-hidden ${
-                index === currentImageIndex ? 'ring-2 ring-neutral' : ''
+                index === currentImageIndex ? "ring-2 ring-neutral" : ""
               }`}
             >
               <img

@@ -1,6 +1,6 @@
-import { Star, Package, Shield, Award, Check } from 'lucide-react';
-import { useState } from 'react';
-import { useToast } from '@/hooks/use-toast';
+import { Star, Package, Shield, Award, Check } from "lucide-react";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 interface ProductDetailsPanelProps {
   title: string;
@@ -19,32 +19,35 @@ export function ProductDetailsPanel({
   reviewCount,
   currentPrice,
   originalPrice,
-  discount
+  discount,
 }: ProductDetailsPanelProps) {
   const { toast } = useToast();
-  const [pincode, setPincode] = useState('');
+  const [pincode, setPincode] = useState("");
   const [deliveryMsg, setDeliveryMsg] = useState<string | null>(null);
   const [pinError, setPinError] = useState<string | null>(null);
 
   const handleAddToCart = () => {
-    toast({ title: 'Added to cart', description: `${title} added to cart` });
+    toast({ title: "Added to cart", description: `${title} added to cart` });
   };
 
   const handleBuyNow = () => {
-    toast({ title: 'Proceed to checkout', description: 'Redirecting to payment...' });
+    toast({
+      title: "Proceed to checkout",
+      description: "Redirecting to payment...",
+    });
   };
 
   const handleCheckPincode = () => {
     if (!/^[0-9]{6}$/.test(pincode)) {
-      setPinError('Enter a valid 6-digit pincode');
+      setPinError("Enter a valid 6-digit pincode");
       setDeliveryMsg(null);
       return;
     }
     setPinError(null);
     const d = new Date();
     d.setDate(d.getDate() + 3);
-    const day = d.toLocaleString('en-GB', { day: '2-digit' });
-    const month = d.toLocaleString('en-GB', { month: 'short' });
+    const day = d.toLocaleString("en-GB", { day: "2-digit" });
+    const month = d.toLocaleString("en-GB", { month: "short" });
     setDeliveryMsg(`Get it by ${day} ${month}`);
   };
 
@@ -68,7 +71,11 @@ export function ProductDetailsPanel({
               <span className="text-white font-montserrat text-lg font-medium">
                 {rating}
               </span>
-              <Star className="w-4 h-4 text-white" fill="white" strokeWidth={0} />
+              <Star
+                className="w-4 h-4 text-white"
+                fill="white"
+                strokeWidth={0}
+              />
             </div>
             <span className="text-neutral text-2xl font-bold font-montserrat">
               ({reviewCount})
@@ -129,8 +136,8 @@ export function ProductDetailsPanel({
           onClick={handleAddToCart}
           className="flex-1 h-[68px] px-8 border font-montserrat text-xl font-bold transition-colors hover:bg-pink-50"
           style={{
-            borderColor: '#FF8F9D',
-            color: '#FF8F9D'
+            borderColor: "#FF8F9D",
+            color: "#FF8F9D",
           }}
         >
           ADD TO CART
@@ -138,7 +145,7 @@ export function ProductDetailsPanel({
         <button
           onClick={handleBuyNow}
           className="flex-1 h-[68px] px-8 font-montserrat text-xl font-bold text-white transition-opacity hover:opacity-90"
-          style={{ backgroundColor: '#FF8F9D' }}
+          style={{ backgroundColor: "#FF8F9D" }}
         >
           BUY NOW
         </button>
@@ -164,7 +171,7 @@ export function ProductDetailsPanel({
             <button
               onClick={handleCheckPincode}
               className="px-5 py-3 font-montserrat text-lg font-bold text-white transition-opacity hover:opacity-90"
-              style={{ backgroundColor: '#FF8F9D' }}
+              style={{ backgroundColor: "#FF8F9D" }}
             >
               Check
             </button>
@@ -175,7 +182,9 @@ export function ProductDetailsPanel({
           {deliveryMsg && (
             <div className="text-lg font-montserrat">
               <span className="text-muted">Delivery to {pincode}: </span>
-              <span className="font-bold" style={{ color: '#FF8F9D' }}>{deliveryMsg}</span>
+              <span className="font-bold" style={{ color: "#FF8F9D" }}>
+                {deliveryMsg}
+              </span>
             </div>
           )}
         </div>
@@ -191,7 +200,10 @@ export function ProductDetailsPanel({
                 2 available
               </span>
             </div>
-            <span className="text-xl font-bold font-montserrat" style={{ color: '#FF8F9D' }}>
+            <span
+              className="text-xl font-bold font-montserrat"
+              style={{ color: "#FF8F9D" }}
+            >
               Check
             </span>
           </div>
@@ -202,18 +214,18 @@ export function ProductDetailsPanel({
       </div>
 
       {/* Product Description */}
-      <div className="border-t pt-8" style={{ borderColor: '#FF8F9D' }}>
+      <div className="border-t pt-8" style={{ borderColor: "#FF8F9D" }}>
         <div className="flex flex-col gap-3">
           <h3 className="text-black text-xl font-bold font-montserrat">
             Product Description
           </h3>
-          
+
           <div className="flex flex-col gap-2">
             {[
-              { label: 'Material:', value: '925 Sterling Silver' },
-              { label: 'Plating:', value: '18K Gold' },
-              { label: 'Weight:', value: '10grams' },
-              { label: 'Stone Type:', value: 'Premium Jerkin' }
+              { label: "Material:", value: "925 Sterling Silver" },
+              { label: "Plating:", value: "18K Gold" },
+              { label: "Weight:", value: "10grams" },
+              { label: "Stone Type:", value: "Premium Jerkin" },
             ].map((item, index) => (
               <div key={index} className="flex items-center gap-3.5">
                 <Check className="w-5 h-5 text-green-600" strokeWidth={1.75} />
@@ -234,7 +246,9 @@ export function ProductDetailsPanel({
           <div className="flex items-center gap-3.5">
             <span className="text-lg font-montserrat">
               <span className="font-normal text-muted">Get it by </span>
-              <span className="font-bold" style={{ color: '#FF8F9D' }}>25 Sept</span>
+              <span className="font-bold" style={{ color: "#FF8F9D" }}>
+                25 Sept
+              </span>
             </span>
           </div>
         </div>

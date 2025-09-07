@@ -1,4 +1,4 @@
-import { ProductDetailLayout } from '@/components/ProductDetailLayout';
+import { ProductDetailLayout } from "@/components/ProductDetailLayout";
 
 export default function Index() {
   return <ProductDetailLayout />;

@@ -1,20 +1,20 @@
-import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 export function Footer() {
   const quickLinks = [
-    'Customer Reviews',
-    'Our Blogs', 
-    'Store Locator',
-    'Jewellery Care',
-    'Join Us'
+    "Customer Reviews",
+    "Our Blogs",
+    "Store Locator",
+    "Jewellery Care",
+    "Join Us",
   ];
 
   const details = [
-    'Shipping & Returns',
-    'Privacy Policy',
-    'International Shipping',
+    "Shipping & Returns",
+    "Privacy Policy",
+    "International Shipping",
     "FAQ's and Support",
-    'Terms of Service'
+    "Terms of Service",
   ];
 
   return (
@@ -83,8 +83,13 @@ export function Footer() {
             </h3>
             <div className="flex flex-col gap-6 text-neutral font-montserrat text-base font-medium">
               <div>
-                <p className="mb-4">Elegant Jewels SF-11, Ansal Fortune Arcade, K Block, K-27, Sector 18, Noida, Uttar Pradesh 201301</p>
-                <p className="mb-4">For any suggestions, queries or complaints please contact us:</p>
+                <p className="mb-4">
+                  Elegant Jewels SF-11, Ansal Fortune Arcade, K Block, K-27,
+                  Sector 18, Noida, Uttar Pradesh 201301
+                </p>
+                <p className="mb-4">
+                  For any suggestions, queries or complaints please contact us:
+                </p>
                 <p className="mb-2">Elegantjewel Private Limited</p>
                 <p className="mb-2">contact@elegantjewels.com</p>
                 <p>+1 (555) 123-4567</p>
@@ -98,23 +103,29 @@ export function Footer() {
           <span className="text-neutral font-montserrat text-base font-medium mr-4">
             Our Social Links:
           </span>
-          <a href="#" className="p-2 hover:bg-gray-100 rounded transition-colors">
+          <a
+            href="#"
+            className="p-2 hover:bg-gray-100 rounded transition-colors"
+          >
             <Linkedin className="w-6 h-6 text-accent" />
           </a>
-          <a href="#" className="p-2 hover:bg-gray-100 rounded transition-colors">
+          <a
+            href="#"
+            className="p-2 hover:bg-gray-100 rounded transition-colors"
+          >
             <Facebook className="w-6 h-6 text-accent" />
           </a>
-          <a href="#" className="p-2 hover:bg-gray-100 rounded transition-colors">
+          <a
+            href="#"
+            className="p-2 hover:bg-gray-100 rounded transition-colors"
+          >
             <Instagram className="w-6 h-6 text-accent" />
           </a>
         </div>
       </div>
 
       {/* Copyright */}
-      <div 
-        className="w-full px-32 py-3"
-        style={{ backgroundColor: '#CA8787' }}
-      >
+      <div className="w-full px-32 py-3" style={{ backgroundColor: "#CA8787" }}>
         <p className="text-white font-montserrat text-sm font-medium">
           © 2024 Elegant Jewels. All Rights Reserved.
         </p>
