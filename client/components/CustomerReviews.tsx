@@ -85,9 +85,9 @@ export function CustomerReviews({ reviews }: CustomerReviewsProps) {
                     {review.images && review.images.length > 0 && (
                       <div className="flex gap-3">
                         {review.images.map((image, imgIndex) => (
-                          <div 
+                          <div
                             key={imgIndex}
-                            className="w-38 h-38 bg-gray-200 rounded"
+                            className="w-[152px] h-[152px] bg-gray-200 rounded"
                           >
                             <img
                               src={image}
