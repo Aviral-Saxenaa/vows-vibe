@@ -1,4 +1,6 @@
 import { Star, Package, Shield, Award, Check } from 'lucide-react';
+import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 interface ProductDetailsPanelProps {
   title: string;
@@ -19,6 +21,33 @@ export function ProductDetailsPanel({
   originalPrice,
   discount
 }: ProductDetailsPanelProps) {
+  const { toast } = useToast();
+  const [pincode, setPincode] = useState('');
+  const [deliveryMsg, setDeliveryMsg] = useState<string | null>(null);
+  const [pinError, setPinError] = useState<string | null>(null);
+
+  const handleAddToCart = () => {
+    toast({ title: 'Added to cart', description: `${title} added to cart` });
+  };
+
+  const handleBuyNow = () => {
+    toast({ title: 'Proceed to checkout', description: 'Redirecting to payment...' });
+  };
+
+  const handleCheckPincode = () => {
+    if (!/^[0-9]{6}$/.test(pincode)) {
+      setPinError('Enter a valid 6-digit pincode');
+      setDeliveryMsg(null);
+      return;
+    }
+    setPinError(null);
+    const d = new Date();
+    d.setDate(d.getDate() + 3);
+    const day = d.toLocaleString('en-GB', { day: '2-digit' });
+    const month = d.toLocaleString('en-GB', { month: 'short' });
+    setDeliveryMsg(`Get it by ${day} ${month}`);
+  };
+
   return (
     <div className="flex flex-col gap-8 max-w-lg">
       {/* Product Title and Rating */}
@@ -78,7 +107,7 @@ export function ProductDetailsPanel({
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-15">
+        <div className="grid grid-cols-2 gap-[3.75rem]">
           <div className="flex items-center gap-2.5">
             <Shield className="w-12 h-12 text-neutral" strokeWidth={1.5} />
             <span className="text-neutral text-xl font-medium font-montserrat">
@@ -96,17 +125,19 @@ export function ProductDetailsPanel({
 
       {/* Action Buttons */}
       <div className="flex gap-3">
-        <button 
-          className="flex-1 h-17 px-8 border font-montserrat text-xl font-bold transition-colors hover:bg-pink-50"
-          style={{ 
+        <button
+          onClick={handleAddToCart}
+          className="flex-1 h-[68px] px-8 border font-montserrat text-xl font-bold transition-colors hover:bg-pink-50"
+          style={{
             borderColor: '#FF8F9D',
             color: '#FF8F9D'
           }}
         >
           ADD TO CART
         </button>
-        <button 
-          className="flex-1 h-17 px-8 font-montserrat text-xl font-bold text-white transition-opacity hover:opacity-90"
+        <button
+          onClick={handleBuyNow}
+          className="flex-1 h-[68px] px-8 font-montserrat text-xl font-bold text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: '#FF8F9D' }}
         >
           BUY NOW
@@ -120,14 +151,33 @@ export function ProductDetailsPanel({
           <h3 className="text-neutral text-xl font-bold font-montserrat">
             Estimated Delivery Time
           </h3>
-          <div className="flex items-center justify-between border border-muted px-3.5 py-4 bg-white">
-            <span className="text-muted text-lg font-medium font-montserrat">
-              Enter Pincode
-            </span>
-            <span className="text-xl font-bold font-montserrat" style={{ color: '#FF8F9D' }}>
+          <div className="flex items-center gap-3">
+            <input
+              value={pincode}
+              onChange={(e) => setPincode(e.target.value)}
+              inputMode="numeric"
+              maxLength={6}
+              placeholder="Enter Pincode"
+              className="flex-1 border border-muted px-3.5 py-3 bg-white text-neutral font-montserrat text-lg outline-none"
+              aria-label="Enter delivery pincode"
+            />
+            <button
+              onClick={handleCheckPincode}
+              className="px-5 py-3 font-montserrat text-lg font-bold text-white transition-opacity hover:opacity-90"
+              style={{ backgroundColor: '#FF8F9D' }}
+            >
               Check
-            </span>
+            </button>
           </div>
+          {pinError && (
+            <p className="text-red-600 text-sm font-montserrat">{pinError}</p>
+          )}
+          {deliveryMsg && (
+            <div className="text-lg font-montserrat">
+              <span className="text-muted">Delivery to {pincode}: </span>
+              <span className="font-bold" style={{ color: '#FF8F9D' }}>{deliveryMsg}</span>
+            </div>
+          )}
         </div>
 
         {/* Offers */}
