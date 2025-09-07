@@ -55,7 +55,7 @@ export function MainNavigation() {
           <Link
             key={item.id}
             to={item.href}
-            className="flex items-center gap-3 px-3 py-4 border-b border-white/20 hover:bg-white/10 transition-colors group"
+            className="flex items-center gap-3 px-3 py-3.5 border-b border-white hover:bg-white/10 transition-colors group h-12"
           >
             <div className="text-white group-hover:scale-110 transition-transform">
               {item.icon}
