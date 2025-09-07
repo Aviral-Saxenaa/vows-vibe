@@ -69,17 +69,17 @@ export function MainNavigation() {
         {/* Login/SignUp Special Item */}
         <Link
           to="/login"
-          className="flex items-center gap-3 px-3 py-4 bg-white rounded-sm hover:bg-gray-50 transition-colors group"
+          className="flex items-center gap-3 px-3 py-3.5 bg-white hover:bg-gray-50 transition-colors group h-12"
         >
           <div className="relative">
-            <User className="w-5 h-5 text-gray-800" strokeWidth={1.5} />
+            <User className="w-5 h-5" strokeWidth={1.5} style={{ color: '#2D2D2D' }} />
             <div className="absolute -bottom-1 -right-1">
-              <div className="w-4 h-4 bg-gray-800 rounded-full flex items-center justify-center">
+              <div className="w-4 h-4 rounded-full flex items-center justify-center" style={{ backgroundColor: '#2D2D2D' }}>
                 <Check className="w-2.5 h-2.5 text-white" strokeWidth={2} />
               </div>
             </div>
           </div>
-          <span className="text-gray-800 font-montserrat font-medium text-base">
+          <span className="font-montserrat font-medium text-base" style={{ color: '#2D2D2D' }}>
             Login / SignUp
           </span>
         </Link>
