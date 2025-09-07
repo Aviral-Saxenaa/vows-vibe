@@ -19,13 +19,6 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/add-account" element={<AddAccount />} />
-          <Route path="/gold-jewellery" element={<GoldJewellery />} />
-          <Route path="/silver-jewellery" element={<SilverJewellery />} />
-          <Route path="/trending-collection" element={<TrendingCollection />} />
-          <Route path="/gifts" element={<Gifts />} />
-          <Route path="/shop-by-occasion" element={<ShopByOccasion />} />
-          <Route path="/login" element={<Login />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
