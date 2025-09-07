@@ -48,7 +48,7 @@ const navigationItems = [
 
 export function MainNavigation() {
   return (
-    <div className="min-h-screen bg-rose-400 lg:w-80 w-full">
+    <div className="min-h-screen lg:w-80 w-full" style={{ backgroundColor: '#CA8787' }}>
       <div className="flex flex-col gap-3 p-4 pt-6">
         {/* Navigation Items */}
         {navigationItems.map((item) => (
